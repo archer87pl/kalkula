@@ -94,6 +94,75 @@ export default function CalculatorIcon({ icon, className = "" }: CalculatorIconP
     );
   }
 
+  if (icon === "bmi") {
+    return (
+      <span className={`calc-icon ${className}`.trim()}>
+        <svg {...sharedProps}>
+          <circle cx="12" cy="7" r="3" />
+          <path d="M8 14c0-2 1.5-4 4-4s4 2 4 4v6H8z" />
+          <path d="M6 18h12" />
+        </svg>
+      </span>
+    );
+  }
+
+  if (icon === "bonds") {
+    return (
+      <span className={`calc-icon ${className}`.trim()}>
+        <svg {...sharedProps}>
+          <rect x="4" y="5" width="16" height="14" rx="2" />
+          <path d="M4 9h16" />
+          <path d="M7 13h10" />
+          <path d="M7 16l3-2 3 2 3-2" />
+        </svg>
+      </span>
+    );
+  }
+
+  if (icon === "resistor") {
+    return (
+      <span className={`calc-icon ${className}`.trim()}>
+        <svg {...sharedProps}>
+          <line x1="3" y1="12" x2="7" y2="12" />
+          <rect x="7" y="8" width="10" height="8" rx="1" />
+          <line x1="17" y1="12" x2="21" y2="12" />
+          <line x1="9" y1="8" x2="9" y2="16" strokeWidth="1.2" />
+          <line x1="12" y1="8" x2="12" y2="16" strokeWidth="1.2" />
+          <line x1="15" y1="8" x2="15" y2="16" strokeWidth="1.2" />
+        </svg>
+      </span>
+    );
+  }
+
+  if (icon === "landregister") {
+    return (
+      <span className={`calc-icon ${className}`.trim()}>
+        <svg {...sharedProps}>
+          <rect x="5" y="3" width="14" height="18" rx="2" />
+          <path d="M9 3v18" />
+          <path d="M5 8h14" />
+          <path d="M5 13h14" />
+          <path d="M13 18l2 2 3-3" />
+        </svg>
+      </span>
+    );
+  }
+
+  if (icon === "yearend") {
+    return (
+      <span className={`calc-icon ${className}`.trim()}>
+        <svg {...sharedProps}>
+          <rect x="3" y="4" width="18" height="18" rx="2" />
+          <path d="M3 9h18" />
+          <path d="M8 4v2" />
+          <path d="M16 4v2" />
+          <circle cx="12" cy="15" r="3" />
+          <path d="M12 13v2l1.5 1.5" />
+        </svg>
+      </span>
+    );
+  }
+
   return (
     <span className={`calc-icon ${className}`.trim()}>
       <svg {...sharedProps}>

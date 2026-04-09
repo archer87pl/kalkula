@@ -209,5 +209,141 @@ export default function CalculatorIllustration({ icon, className = "" }: Props) 
     );
   }
 
+  if (icon === "bonds") {
+    // Treasury bond certificate with rising chart line
+    return (
+      <span className={cls} aria-hidden="true">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Certificate background */}
+          <rect x="8" y="12" width="52" height="56" rx="5" fill="#e8f5e9" stroke="#2e7d32" strokeWidth="1.2" />
+          {/* Decorative border */}
+          <rect x="12" y="16" width="44" height="48" rx="3" fill="none" stroke="#4caf50" strokeWidth="0.8" strokeDasharray="4 2" />
+          {/* Eagle emblem */}
+          <circle cx="32" cy="28" r="8" fill="#1b5e20" opacity="0.15" />
+          <path d="M32 23 L36 28 L32 32 L28 28 Z" fill="#2e7d32" />
+          {/* Title lines */}
+          <rect x="16" y="40" width="24" height="2.5" rx="1.25" fill="#2e7d32" />
+          <rect x="16" y="46" width="18" height="2" rx="1" fill="#66bb6a" />
+          {/* Chart area */}
+          <rect x="14" y="52" width="40" height="10" rx="2" fill="white" stroke="#4caf50" strokeWidth="0.8" />
+          {/* Rising line chart */}
+          <polyline
+            points="16,60 22,58 28,56 34,54 40,51 46,48 52,45"
+            stroke="#2e7d32"
+            strokeWidth="2"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          {/* Chart dots */}
+          <circle cx="22" cy="58" r="1.5" fill="#4caf50" />
+          <circle cx="34" cy="54" r="1.5" fill="#4caf50" />
+          <circle cx="46" cy="48" r="1.5" fill="#4caf50" />
+          {/* Coin badge with % symbol */}
+          <circle cx="58" cy="58" r="16" fill="#1b5e20" />
+          {/* % sign that represents interest rate */}
+          <circle cx="52" cy="52" r="3" fill="none" stroke="#a5d6a7" strokeWidth="2" />
+          <circle cx="64" cy="64" r="3" fill="none" stroke="#a5d6a7" strokeWidth="2" />
+          <line x1="54" y1="64" x2="62" y2="52" stroke="#a5d6a7" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      </span>
+    );
+  }
+
+  if (icon === "resistor") {
+    // Resistor with colored bands (brown-black-red-gold = 1kΩ ±5%)
+    return (
+      <span className={cls} aria-hidden="true">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Resistor body */}
+          <rect x="15" y="30" width="50" height="20" rx="3" fill="#D4A574" stroke="#8B6F47" strokeWidth="1.2" />
+          {/* Lead wires */}
+          <line x1="4" y1="40" x2="15" y2="40" stroke="#999" strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="65" y1="40" x2="76" y2="40" stroke="#999" strokeWidth="2.5" strokeLinecap="round" />
+          {/* Color bands: brown-black-red-gold (1kΩ ±5%) */}
+          <rect x="22" y="30" width="5" height="20" fill="#8B4513" />
+          <rect x="32" y="30" width="5" height="20" fill="#000000" />
+          <rect x="42" y="30" width="5" height="20" fill="#FF0000" />
+          <rect x="52" y="30" width="5" height="20" fill="#FFD700" />
+          {/* Ohm symbol badge */}
+          <circle cx="64" cy="60" r="14" fill="#3f51b5" />
+          <text x="64" y="68" fontSize="18" fontWeight="bold" fill="white" textAnchor="middle" fontFamily="Arial">Ω</text>
+        </svg>
+      </span>
+    );
+  }
+
+  if (icon === "landregister") {
+    // Land register book with checkmark badge
+    return (
+      <span className={cls} aria-hidden="true">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Large registry book */}
+          <rect x="12" y="10" width="48" height="60" rx="4" fill="#f0e6d2" stroke="#8b7355" strokeWidth="1.5" />
+          {/* Spine shadow */}
+          <rect x="12" y="10" width="8" height="60" rx="4" fill="#c9a875" opacity="0.4" />
+          {/* Horizontal lines (registry entries) */}
+          <line x1="24" y1="22" x2="54" y2="22" stroke="#8b7355" strokeWidth="1" opacity="0.6" />
+          <line x1="24" y1="30" x2="54" y2="30" stroke="#8b7355" strokeWidth="1" opacity="0.6" />
+          <line x1="24" y1="38" x2="54" y2="38" stroke="#8b7355" strokeWidth="1" opacity="0.6" />
+          <line x1="24" y1="46" x2="54" y2="46" stroke="#8b7355" strokeWidth="1" opacity="0.6" />
+          <line x1="24" y1="54" x2="54" y2="54" stroke="#8b7355" strokeWidth="1" opacity="0.6" />
+          {/* Vertical divider (like columns in registry) */}
+          <line x1="35" y1="18" x2="35" y2="62" stroke="#8b7355" strokeWidth="1" opacity="0.5" />
+          {/* Title area */}
+          <rect x="22" y="12" width="34" height="6" rx="1" fill="#8b7355" opacity="0.3" />
+          {/* Checkmark badge */}
+          <circle cx="58" cy="58" r="16" fill="#059669" />
+          <path
+            d="M50 58 L55 63 L66 52"
+            stroke="white"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+          />
+        </svg>
+      </span>
+    );
+  }
+
+  if (icon === "yearend") {
+    // Calendar with countdown clock badge
+    return (
+      <span className={cls} aria-hidden="true">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Calendar background */}
+          <rect x="10" y="14" width="50" height="56" rx="5" fill="#dbeafe" stroke="#3b82f6" strokeWidth="1.5" />
+          {/* Calendar header */}
+          <rect x="10" y="14" width="50" height="12" rx="5" fill="#3b82f6" />
+          <rect x="10" y="20" width="50" height="6" fill="#3b82f6" />
+          {/* Binding rings */}
+          <circle cx="22" cy="14" r="3" fill="#1e40af" />
+          <circle cx="48" cy="14" r="3" fill="#1e40af" />
+          {/* Calendar grid */}
+          <line x1="18" y1="32" x2="52" y2="32" stroke="#93c5fd" strokeWidth="0.8" />
+          <line x1="18" y1="40" x2="52" y2="40" stroke="#93c5fd" strokeWidth="0.8" />
+          <line x1="18" y1="48" x2="52" y2="48" stroke="#93c5fd" strokeWidth="0.8" />
+          <line x1="18" y1="56" x2="52" y2="56" stroke="#93c5fd" strokeWidth="0.8" />
+          <line x1="26" y1="28" x2="26" y2="64" stroke="#93c5fd" strokeWidth="0.8" />
+          <line x1="34" y1="28" x2="34" y2="64" stroke="#93c5fd" strokeWidth="0.8" />
+          <line x1="42" y1="28" x2="42" y2="64" stroke="#93c5fd" strokeWidth="0.8" />
+          {/* Some dates marked */}
+          <circle cx="22" cy="36" r="2" fill="#3b82f6" opacity="0.5" />
+          <circle cx="30" cy="36" r="2" fill="#3b82f6" opacity="0.5" />
+          <circle cx="38" cy="44" r="2" fill="#3b82f6" opacity="0.5" />
+          <circle cx="46" cy="52" r="2" fill="#3b82f6" opacity="0.5" />
+          {/* Clock/countdown badge */}
+          <circle cx="58" cy="58" r="16" fill="#f59e0b" />
+          <circle cx="58" cy="58" r="11" fill="none" stroke="white" strokeWidth="2" />
+          {/* Clock hands pointing to year end */}
+          <line x1="58" y1="58" x2="58" y2="50" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="58" y1="58" x2="64" y2="58" stroke="white" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="58" cy="58" r="1.5" fill="white" />
+        </svg>
+      </span>
+    );
+  }
+
   return <span className={cls} aria-hidden="true" />;
 }

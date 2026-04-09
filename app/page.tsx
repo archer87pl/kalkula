@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import CalculatorIcon from "@/components/CalculatorIcon";
+import CalculatorIllustration from "@/components/CalculatorIllustration";
 import PageHeader from "@/components/PageHeader";
 import StructuredData from "@/components/StructuredData";
 import { CALCULATORS } from "@/lib/calculators";
@@ -21,17 +22,18 @@ export default function HomePage() {
   return (
     <>
       <StructuredData data={jsonLd} />
-      <PageHeader showBack={false} />
       <main className="home-shell">
-        <section className="hero">
-          <p className="hero-eyebrow">KALKULA 2026</p>
-          <h1>Praktyczne kalkulatory online</h1>
-          <p className="helper">
-            Kalkula to serwis z różnymi kalkulatorami online, które pomagają szybko policzyć
-            najważniejsze wartości z obszaru finansów, prawa i zdrowia. W jednym miejscu
-            znajdziesz narzędzia do obliczenia raty kredytu lub pożyczki, podatku PCC,
-            taksy notarialnej oraz wskaźnika BMI.
-          </p>
+        <section className="home-hero-layout" aria-label="Wprowadzenie do serwisu Kalkula">
+          <section className="hero hero-minimal hero-home">
+            <h1>Kalkulatory online</h1>
+            <p className="helper">
+              Kalkula to serwis z różnymi kalkulatorami online, które pomagają szybko policzyć
+              najważniejsze wartości z obszaru finansów, prawa i zdrowia. W jednym miejscu
+              znajdziesz narzędzia do obliczenia raty kredytu lub pożyczki, podatku PCC,
+              taksy notarialnej oraz wskaźnika BMI.
+            </p>
+          </section>
+          <PageHeader showBack={false} />
         </section>
         <section className="grid" aria-label="Lista kalkulatorów">
           {CALCULATORS.map((item) => (
@@ -40,6 +42,7 @@ export default function HomePage() {
                 <CalculatorIcon icon={item.icon} />
                 <span className="category-chip">{item.category}</span>
               </div>
+              <CalculatorIllustration icon={item.icon} className="card-illustration" />
               <h3>{item.title}</h3>
               <p>{item.description}</p>
               <span className="card-cta">Zobacz →</span>

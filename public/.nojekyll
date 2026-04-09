@@ -1,0 +1,3 @@
+# Ten pusty plik informuje GitHub Pages, żeby nie używał Jekyll do przetwarzania strony
+# Jest to wymagane dla Next.js, ponieważ Jekyll ignoruje foldery zaczynające się od '_'
+# a Next.js używa foldera '_next' dla swoich zasobów

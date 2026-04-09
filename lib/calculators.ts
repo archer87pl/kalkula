@@ -1,4 +1,4 @@
-export type CalculatorIconKey = "pcc" | "notarial" | "loan" | "cash" | "bmi" | "vat" | "alcohol";
+export type CalculatorIconKey = "pcc" | "notarial" | "loan" | "cash" | "bmi" | "vat" | "alcohol" | "bonds" | "resistor" | "landregister" | "yearend";
 
 export type CalculatorItem = {
   href: string;
@@ -7,7 +7,7 @@ export type CalculatorItem = {
   description: string;
   seoDescription: string;
   helperText: string;
-  category: "Finanse" | "Prawo" | "Zdrowie";
+  category: "Finanse" | "Prawo" | "Zdrowie" | "Elektronika" | "Narzędzia";
   icon: CalculatorIconKey;
   keywords: string[];
   faq: Array<{
@@ -259,6 +259,209 @@ export const CALCULATORS: CalculatorItem[] = [
       {
         question: "Czy mogę zaufać temu kalkulatorowi i wsiąść za kierownicę?",
         answer: "Absolutnie nie. Kalkulator daje szacunek, który może się różnić od rzeczywistości nawet o 20–30% w zależności od tego, co jadłeś, jak się czujesz, jakie masz leki, jak Twój wątroba pracuje danego dnia. Jedynym wiarygodnym pomiarem jest alkotest lub badanie krwi. Jeśli piłeś – nie prowadź. Zawołaj taksówkę."
+      }
+    ]
+  },
+  {
+    href: "/finanse/obligacje",
+    title: "Kalkulator obligacji skarbowych",
+    shortTitle: "Obligacje",
+    description: "Sprawdź, ile zarobisz na obligacjach OTS, ROR, DOR, TOS, COI, EDO, ROS, ROD.",
+    seoDescription:
+      "Rozważasz zakup obligacji skarbowych? Sprawdź, ile wyniesie Twój zysk po okresie oszczędzania. Kalkulator uwzględnia wszystkie typy obligacji: OTS, ROR, DOR, TOS, COI, EDO, ROS i ROD – ze stałym i zmiennym oprocentowaniem, z wykresem wzrostu kapitału.",
+    helperText:
+      "Wybierz typ obligacji (OTS, ROR, DOR, TOS, COI, EDO, ROS lub ROD), wpisz kwotę i zobacz, ile zarobisz. Kalkulator automatycznie wypełni oprocentowanie i marżę dla wybranego typu. Możesz zmienić stopę NBP lub inflację, żeby zasymulować różne scenariusze.",
+    category: "Finanse",
+    icon: "bonds",
+    keywords: [
+      "obligacje skarbowe",
+      "kalkulator obligacji",
+      "ots",
+      "ror",
+      "dor",
+      "edo",
+      "tos",
+      "coi",
+      "ros",
+      "rod",
+      "tos",
+      "obligacje oszczędnościowe",
+      "obligacje skarbowe kalkulator"
+    ],
+    faq: [
+      {
+        question: "Co to są obligacje skarbowe i czy są bezpieczne?",
+        answer:
+          "Obligacje skarbowe to pożyczka, którą dajesz państwu polskiemu. W zamian państwo wypłaca Ci odsetki i po pewnym czasie oddaje całą kwotę. To jedna z najbezpieczniejszych form oszczędzania – ryzyko, że państwo nie wypłaci pieniędzy, jest praktycznie zerowe."
+      },
+      {
+        question: "Czym różnią się OTS, ROR, DOR, TOS, EDO i inne typy obligacji?",
+        answer:
+          "Każdy typ różni się okresem oszczędzania i sposobem oprocentowania. OTS to krótkie 3-miesięczne obligacje ze stałą stopą (2%). ROR i DOR mają zmienne oprocentowanie oparte na stopie NBP. TOS to 3-letnie ze stałym oprocentowaniem 4,4%. COI (4-letnie), EDO (10-letnie), ROS (6-letnie) i ROD (12-letnie) są indeksowane inflacją z odpowiednią marżą – chroniąc Twoje oszczędności przed utratą wartości."
+      },
+      {
+        question: "Czy mogę wypłacić obligacje przed terminem?",
+        answer:
+          "Tak, możesz wykupić obligacje wcześniej, ale zwykle tracisz odsetki z ostatniego okresu odsetkowego (np. z ostatniego roku). Obligacje skarbowe nie mają kar za wcześniejszy wykup poza utratą naliczonych odsetek – kapitał dostajesz w całości."
+      },
+      {
+        question: "Jak działa indeksacja inflacją w obligacjach COI, EDO, ROS i ROD?",
+        answer:
+          "Obligacje indeksowane inflacją wypłacają odsetki na poziomie inflacji ogłaszanej przez GUS plus dodatkową marżę (od 1,5% do 2,5% w zależności od typu). Dzięki temu Twoje oszczędności rosną co najmniej tak szybko jak inflacja – nie tracisz siły nabywczej pieniędzy."
+      },
+      {
+        question: "Czy muszę płacić podatek od odsetek z obligacji?",
+        answer:
+          "Nie. Odsetki od obligacji skarbowych detalicznych (OTS, ROR, DOR, TOS, COI, EDO, ROS, ROD) są zwolnione z podatku Belki (19%). Dostajesz pełną kwotę bez potrąceń – to czyni obligacje jeszcze bardziej opłacalnymi w porównaniu do lokat bankowych."
+      }
+    ]
+  },
+  {
+    href: "/elektronika/rezystor",
+    title: "Kalkulator kodów barwnych rezystorów",
+    shortTitle: "Rezystory",
+    description: "Odczytaj wartość rezystora na podstawie kolorowych pasków (4, 5 lub 6 pasmowych).",
+    seoDescription:
+      "Nie wiesz, jaką wartość ma rezystor? Wybierz kolory pasków, a kalkulator od razu poda rezystancję, tolerancję i współczynnik temperaturowy. Obsługuje rezystory 4, 5 i 6-pasmowe – idealne dla elektroników i hobbyistów.",
+    helperText:
+      "Wybierz ilość pasków na rezystorze (4, 5 lub 6), a następnie wskaż kolory poszczególnych pasków. Kalkulator automatycznie wyliczy wartość rezystancji w omach, tolerancję i (dla 6-pasmowych) współczynnik temperaturowy.",
+    category: "Elektronika",
+    icon: "resistor",
+    keywords: [
+      "kalkulator rezystorów",
+      "kody barwne rezystorów",
+      "kolor rezystor",
+      "rezystor kalkulator",
+      "paski rezystor",
+      "rezystancja kalkulator",
+      "4 pasmowy rezystor",
+      "5 pasmowy rezystor",
+      "6 pasmowy rezystor"
+    ],
+    faq: [
+      {
+        question: "Jak czytać kolory na rezystorze?",
+        answer:
+          "Kolory na rezystorze odczytujesz od lewej do prawej. Pierwsze 2-3 paski to cyfry wartości, kolejny to mnożnik, dalej tolerancja (złoty to ±5%, srebrny ±10%, brązowy ±1%), a w rezystorach 6-pasmowych ostatni pasek to współczynnik temperaturowy."
+      },
+      {
+        question: "Czym różnią się rezystory 4, 5 i 6-pasmowe?",
+        answer:
+          "Rezystor 4-pasmowy ma 2 cyfry wartości, mnożnik i tolerancję – typowo ±5% lub ±10%. Rezystor 5-pasmowy ma 3 cyfry wartości i zwykle większą precyzję (±1% lub ±2%). Rezystor 6-pasmowy dodatkowo informuje o współczynniku temperaturowym, pokazując jak rezystancja zmienia się z temperaturą."
+      },
+      {
+        question: "Jak poznać, od której strony czytać kolory?",
+        answer:
+          "Pasek tolerancji (złoty, srebrny lub brązowy) jest zazwyczaj umieszczony odrobinę dalej od pozostałych pasków lub jest na końcu obwodu. Czytaj od przeciwnego końca – zaczynając od pasków bliżej siebie."
+      },
+      {
+        question: "Co to jest tolerancja rezystora?",
+        answer:
+          "Tolerancja to dopuszczalne odchylenie rzeczywistej wartości rezystancji od wartości nominalnej. Jeśli rezystor ma 1 kΩ ±5%, to jego rzeczywista wartość może być między 950 Ω a 1050 Ω. Im niższa tolerancja, tym bardziej precyzyjny (i zazwyczaj droższy) jest rezystor."
+      },
+      {
+        question: "Jakie kolory odpowiadają jakim cyfrom?",
+        answer:
+          "Czarny=0, Brązowy=1, Czerwony=2, Pomarańczowy=3, Żółty=4, Zielony=5, Niebieski=6, Fioletowy=7, Szary=8, Biały=9. Mnożniki: Złoty=×0.1, Srebrny=×0.01, Czarny=×1, Brązowy=×10, Czerwony=×100 itd. Złoty i srebrny pasek na końcu oznacza tolerancję (5% i 10%)."
+      }
+    ]
+  },
+  {
+    href: "/prawo/ksiega-wieczysta",
+    title: "Kalkulator cyfry kontrolnej księgi wieczystej",
+    shortTitle: "Księga wieczysta",
+    description: "Oblicz cyfrę kontrolną lub sprawdź poprawność numeru księgi wieczystej.",
+    seoDescription:
+      "Potrzebujesz cyfry kontrolnej do numeru księgi wieczystej? Wybierz kod sądu, wpisz numer i od razu otrzymasz pełny numer KW z cyfrą kontrolną. Możesz też sprawdzić, czy podany numer jest poprawny – kalkulator obsługuje wszystkie wydziały ksiąg wieczystych w Polsce.",
+    helperText:
+      "Wybierz kod wydziału księgi wieczystej (np. KR1P dla Krakowa), wpisz numer, a kalkulator obliczy cyfrę kontrolną. Możesz też sprawdzić poprawność numeru, który już masz – wystarczy wpisać pełny numer z ukośnikami.",
+    category: "Prawo",
+    icon: "landregister",
+    keywords: [
+      "księga wieczysta",
+      "cyfra kontrolna",
+      "numer księgi wieczystej",
+      "kalkulator księgi wieczystej",
+      "kod sądu",
+      "ekw",
+      "elektroniczna księga wieczysta",
+      "sprawdź księgę wieczystą",
+      "numer KW"
+    ],
+    faq: [
+      {
+        question: "Co to jest cyfra kontrolna księgi wieczystej?",
+        answer:
+          "Cyfra kontrolna to ostatni znak w numerze księgi wieczystej (po drugim ukośniku). Służy do wykrywania błędów przy przepisywaniu numeru – jeśli pomylisz jedną cyfrę lub literę, cyfra kontrolna się nie zgodzi. Format to: KOD_SĄDU/NUMER/CYFRA (np. KR1P/00012345/6)."
+      },
+      {
+        question: "Skąd wziąć kod sądu dla mojej nieruchomości?",
+        answer:
+          "Kod sądu (4 znaki, np. KR1P, WA1M, GD1G) znajdziesz w dokumentach dotyczących nieruchomości – w akcie notarialnym, umowie, wypisie z księgi wieczystej. Kody oznaczają konkretne wydziały ksiąg wieczystych przy sądach rejonowych w całej Polsce. W kalkulatorze masz pełną listę wszystkich kodów."
+      },
+      {
+        question: "Jak sprawdzić księgę wieczystą online?",
+        answer:
+          "Wejdź na stronę ekw.ms.gov.pl (portal Ministerstwa Sprawiedliwości), wpisz pełny numer księgi wieczystej z cyfrą kontrolną i wybierz \"Wyszukaj\". Otrzymasz aktualny odpis – bezpłatnie, bez logowania. Jeśli nie masz cyfry kontrolnej, użyj tego kalkulatora, żeby ją obliczyć."
+      },
+      {
+        question: "Co zrobić, gdy kalkulator pokazuje błąd?",
+        answer:
+          "Upewnij się, że wybrałeś właściwy kod sądu (sprawdź dokument nieruchomości) i że numer wpisałeś bez ukośników, spacji ani liter – tylko cyfry. Jeśli weryfikujesz istniejący numer, wpisz go dokładnie w formacie KOD/NUMER/CYFRA. Jeśli nadal nie działa, możliwe że numer jest źle przepisany z dokumentu."
+      },
+      {
+        question: "Czy mogę ufać obliczonej cyfrze kontrolnej?",
+        answer:
+          "Tak – kalkulator stosuje oficjalny algorytm używany przez polskie sądy. Cyfra kontrolna jest obliczana automatycznie na podstawie kodu sądu i numeru księgi, dlatego wynik jest zawsze prawidłowy. Możesz go bezpiecznie użyć do wyszukania księgi wieczystej na ekw.ms.gov.pl."
+      }
+    ]
+  },
+  {
+    href: "/narzedzia/dni-do-konca-roku",
+    title: "Kalkulator dni do końca roku",
+    shortTitle: "Dni do końca roku",
+    description: "Sprawdź ile dni, tygodni i miesięcy zostało do końca roku.",
+    seoDescription:
+      "Chcesz wiedzieć, ile czasu zostało do końca roku? Kalkulator pokaże dokładną liczbę dni do Sylwestra, procent miniony roku, ile zostało dni roboczych i weekendów. Sprawdź postęp realizacji swoich rocznych planów!",
+    helperText:
+      "Kalkulator automatycznie pokazuje, ile dni pozostało do końca bieżącego roku. Zobacz postęp roku w procentach, dowiedz się ile zostało dni roboczych, weekendów i tygodni. Możesz też wybrać własną datę, żeby sprawdzić ile czasu zostało z dowolnego momentu.",
+    category: "Narzędzia",
+    icon: "yearend",
+    keywords: [
+      "dni do końca roku",
+      "ile dni do sylwestra",
+      "koniec roku",
+      "kalkulator dni",
+      "postęp roku",
+      "dni do nowego roku",
+      "ile zostało do końca roku",
+      "dni robocze do końca roku"
+    ],
+    faq: [
+      {
+        question: "Jak działa kalkulator dni do końca roku?",
+        answer:
+          "Kalkulator automatycznie pobiera dzisiejszą datę i oblicza ile dni zostało do 31 grudnia. Pokazuje też dodatkowe informacje: procent roku, który już minął, ile zostało dni roboczych (poniedziałek-piątek), weekendów, tygodni i pełnych miesięcy. Wszystko aktualizuje się automatycznie każdego dnia."
+      },
+      {
+        question: "Czy mogę sprawdzić dni do końca roku z dowolnej daty?",
+        answer:
+          "Tak! Wystarczy zaznaczyć opcję 'Wybierz własną datę' i wpisać dowolny dzień. Kalkulator pokaże ile dni pozostało do końca roku z tej daty. Przydatne przy planowaniu długoterminowym lub sprawdzaniu postępów z przeszłości."
+      },
+      {
+        question: "Do czego może się przydać ten kalkulator?",
+        answer:
+          "Kalkulator pomaga śledzić postęp realizacji rocznych celów – czy to osobistych, zawodowych czy biznesowych. Możesz zobaczyć ile dni roboczych zostało na dokończenie projektów, zaplanować pozostały czas lub po prostu sprawdzić jak szybko rok mija. Świetny do motywacji i planowania!"
+      },
+      {
+        question: "Czy kalkulator uwzględnia dni świąteczne?",
+        answer:
+          "Kalkulator pokazuje czyste dni robocze (poniedziałek-piątek) i weekendy (sobota-niedziela), ale nie odejmuje świąt państwowych. W praktyce dni roboczych będzie nieco mniej ze względu na święta, które w Polsce wypadają w tygodniu (np. Boże Narodzenie, Nowy Rok)."
+      },
+      {
+        question: "Co to znaczy, że rok jest przestępny?",
+        answer:
+          "Rok przestępny ma 366 dni zamiast standardowych 365 – dodatkowy dzień (29 lutego) pojawia się co 4 lata. Kalkulator automatycznie wykrywa czy aktualny rok jest przestępny i odpowiednio dostosowuje obliczenia. Następny rok przestępny to 2028."
       }
     ]
   }

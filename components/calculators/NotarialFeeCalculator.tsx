@@ -1,68 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-
-function calculateFee(value: number): number {
-  if (value <= 3000) return 100;
-  if (value <= 10000) return 100 + (value - 3000) * 0.03;
-  if (value <= 30000) return 310 + (value - 10000) * 0.02;
-  if (value <= 60000) return 710 + (value - 30000) * 0.01;
-  if (value <= 1000000) return 1010 + (value - 60000) * 0.004;
-  if (value <= 2000000) return 4770 + (value - 1000000) * 0.002;
-  return Math.min(10000, 6770 + (value - 2000000) * 0.0025);
-}
-
-type DeedConfig = {
-  label: string;
-  feeMultiplier: number;
-  allowsPcc: boolean;
-  addsMortgageEntry: boolean;
-};
-
-const DEED_TYPES: Record<string, DeedConfig> = {
-  sale: {
-    label: "Kupno-sprzedaż",
-    feeMultiplier: 1,
-    allowsPcc: true,
-    addsMortgageEntry: false
-  },
-  preliminary: {
-    label: "Umowa przedwstępna",
-    feeMultiplier: 0.5,
-    allowsPcc: false,
-    addsMortgageEntry: false
-  },
-  donation: {
-    label: "Darowizna",
-    feeMultiplier: 0.5,
-    allowsPcc: false,
-    addsMortgageEntry: false
-  },
-  developer: {
-    label: "Umowa deweloperska",
-    feeMultiplier: 0.5,
-    allowsPcc: false,
-    addsMortgageEntry: false
-  },
-  ownership: {
-    label: "Ustanowienie odrębnej własności lokalu",
-    feeMultiplier: 0.5,
-    allowsPcc: false,
-    addsMortgageEntry: false
-  },
-  mortgage: {
-    label: "Ustanowienie hipoteki",
-    feeMultiplier: 0.25,
-    allowsPcc: false,
-    addsMortgageEntry: true
-  },
-  enforcement: {
-    label: "Poddanie się egzekucji",
-    feeMultiplier: 0.5,
-    allowsPcc: false,
-    addsMortgageEntry: false
-  }
-};
+import { DEED_TYPES, DONATION_TAX_GROUPS, type DonationTaxGroup, calculateNotarialFeeBreakdown } from "@/lib/notarial-fee";
 
 const PLN_FORMATTER = new Intl.NumberFormat("pl-PL", {
   style: "currency",
@@ -82,6 +21,7 @@ export default function NotarialFeeCalculator() {
   const [includeVat, setIncludeVat] = useState(true);
   const [includeLandRegister, setIncludeLandRegister] = useState(true);
   const [includePcc, setIncludePcc] = useState(true);
+  const [donationTaxGroup, setDonationTaxGroup] = useState<DonationTaxGroup | null>(null);
   const [touched, setTouched] = useState(false);
 
   const deedConfig = DEED_TYPES[deedType];
@@ -91,6 +31,18 @@ export default function NotarialFeeCalculator() {
       setIncludePcc(false);
     }
   }, [deedConfig.allowsPcc]);
+
+  useEffect(() => {
+    if (!deedConfig.allowsLandRegister) {
+      setIncludeLandRegister(false);
+    }
+  }, [deedConfig.allowsLandRegister]);
+
+  useEffect(() => {
+    if (deedType !== "donation") {
+      setDonationTaxGroup(null);
+    }
+  }, [deedType]);
 
   const numericValue = Number(value);
   const copiesNum = Number(copyCount);
@@ -109,40 +61,20 @@ export default function NotarialFeeCalculator() {
 
   const breakdown = useMemo(() => {
     if (!isValid) return null;
-    const baseNet = calculateFee(numericValue) * deedConfig.feeMultiplier;
-    const baseVat = includeVat ? baseNet * 0.23 : 0;
-
-    const copiesNet = copiesNum * pagesNum * 6;
-    const copiesVat = includeVat ? copiesNet * 0.23 : 0;
-
-    const landRegisterFee = includeLandRegister ? 200 : 0;
-    const mortgageEntryFee = deedConfig.addsMortgageEntry ? 200 : 0;
-    const pccTax = includePcc && deedConfig.allowsPcc ? numericValue * 0.02 : 0;
-
-    const total =
-      baseNet +
-      baseVat +
-      copiesNet +
-      copiesVat +
-      landRegisterFee +
-      mortgageEntryFee +
-      pccTax;
-
-    return {
-      baseNet,
-      baseVat,
-      copiesNet,
-      copiesVat,
-      landRegisterFee,
-      mortgageEntryFee,
-      pccTax,
-      total
-    };
+    return calculateNotarialFeeBreakdown({
+      value: numericValue,
+      deedType,
+      copyCount: copiesNum,
+      copyPages: pagesNum,
+      includeVat,
+      includeLandRegister,
+        includePcc,
+        donationTaxGroup
+    });
   }, [
     copiesNum,
-    deedConfig.addsMortgageEntry,
-    deedConfig.allowsPcc,
-    deedConfig.feeMultiplier,
+    deedType,
+    donationTaxGroup,
     includeLandRegister,
     includePcc,
     includeVat,
@@ -167,6 +99,26 @@ export default function NotarialFeeCalculator() {
           ))}
         </select>
       </label>
+
+      {deedType === "donation" && (
+        <label>
+          Grupa podatkowa obdarowanego (podatek SD)
+          <select
+            className="input-control"
+            value={donationTaxGroup ?? ""}
+            onChange={(e) =>
+              setDonationTaxGroup(e.target.value ? (e.target.value as DonationTaxGroup) : null)
+            }
+          >
+            <option value="">— nie obliczaj podatku od darowizn —</option>
+            {Object.entries(DONATION_TAX_GROUPS).map(([key, cfg]) => (
+              <option key={key} value={key} title={cfg.members}>
+                {cfg.label} — {cfg.members}
+              </option>
+            ))}
+          </select>
+        </label>
+      )}
 
       <label>
         Wartość transakcji (PLN)
@@ -214,14 +166,19 @@ export default function NotarialFeeCalculator() {
         <span>Uwzględnij VAT 23%</span>
       </label>
 
-      <label className="checkbox-row">
-        <input
-          type="checkbox"
-          checked={includeLandRegister}
-          onChange={(event) => setIncludeLandRegister(event.target.checked)}
-        />
-        <span>Dodaj opłatę za wniosek wieczystoksięgowy (200 zł)</span>
-      </label>
+      {deedConfig.allowsLandRegister && (
+        <label className="checkbox-row">
+          <input
+            type="checkbox"
+            checked={includeLandRegister}
+            onChange={(event) => setIncludeLandRegister(event.target.checked)}
+          />
+          <span>
+            Dodaj wniosek wieczystoksięgowy (200 zł netto + VAT 23%) i opłatę sądową (
+            {deedType === "ownership" ? "260 zł" : "200 zł"}, bez VAT)
+          </span>
+        </label>
+      )}
 
       <label className="checkbox-row checkbox-row-nested">
         <input
@@ -247,20 +204,20 @@ export default function NotarialFeeCalculator() {
               <strong role="cell">{formatPln(breakdown.baseNet)}</strong>
             </p>
             <p role="row">
-              <span role="cell">VAT od taksy</span>
-              <strong role="cell">{formatPln(breakdown.baseVat)}</strong>
-            </p>
-            <p role="row">
               <span role="cell">Wypisy aktu (netto)</span>
               <strong role="cell">{formatPln(breakdown.copiesNet)}</strong>
             </p>
             <p role="row">
-              <span role="cell">VAT od wypisów</span>
-              <strong role="cell">{formatPln(breakdown.copiesVat)}</strong>
+              <span role="cell">VAT 23%</span>
+              <strong role="cell">{formatPln(breakdown.baseVat + breakdown.copiesVat)}</strong>
             </p>
             <p role="row">
-              <span role="cell">Opłata sądowa (KW)</span>
+              <span role="cell">Wniosek KW (z VAT, jeśli włączony)</span>
               <strong role="cell">{formatPln(breakdown.landRegisterFee)}</strong>
+            </p>
+            <p role="row">
+              <span role="cell">Opłata sądowa</span>
+              <strong role="cell">{formatPln(breakdown.courtFee)}</strong>
             </p>
             <p role="row">
               <span role="cell">Wpis hipoteki</span>
@@ -270,6 +227,12 @@ export default function NotarialFeeCalculator() {
               <span role="cell">Podatek PCC</span>
               <strong role="cell">{formatPln(breakdown.pccTax)}</strong>
             </p>
+            {breakdown.donationTax > 0 && (
+              <p role="row">
+                <span role="cell">Podatek od darowizn (SD)</span>
+                <strong role="cell">{formatPln(breakdown.donationTax)}</strong>
+              </p>
+            )}
             <p role="row" className="cost-total">
               <span role="cell">Łącznie do zapłaty</span>
               <strong role="cell">{formatPln(breakdown.total)}</strong>

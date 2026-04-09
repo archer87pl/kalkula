@@ -1,6 +1,8 @@
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import CalculatorIcon from "@/components/CalculatorIcon";
+import CalculatorIllustration from "@/components/CalculatorIllustration";
+import AutoFocusOnMobile from "@/components/AutoFocusOnMobile";
 import CalculatorNav from "@/components/CalculatorNav";
 import RecentCalculators from "@/components/RecentCalculators";
 import StructuredData from "@/components/StructuredData";
@@ -42,6 +44,7 @@ export default function CalculatorLayout({
   return (
     <>
       <StructuredData data={schemaData} />
+      <AutoFocusOnMobile targetId="calculator-focus-target" />
       <PageHeader />
       <CalculatorNav currentHref={currentHref} />
       <main className="calc-box">
@@ -51,12 +54,19 @@ export default function CalculatorLayout({
           <a href="#powiazane">Powiązane</a>
         </nav>
 
-        <h1 className="calc-title">
-          <CalculatorIcon icon={icon} className="calc-title-icon" />
-          <span>{title}</span>
-        </h1>
-        <p className="helper">{helperText}</p>
-        {children}
+        <section className="calc-head">
+          <div className="calc-head-main">
+            <h1 className="calc-title">
+              <CalculatorIcon icon={icon} className="calc-title-icon" />
+              <span>{title}</span>
+            </h1>
+            <p className="helper">{helperText}</p>
+          </div>
+          <CalculatorIllustration icon={icon} className="calc-head-illustration" />
+        </section>
+        <section id="calculator-focus-target" className="calculator-focus-target" tabIndex={-1}>
+          {children}
+        </section>
         <section id="opis-seo" className="seo-copy" aria-label="Opis kalkulatora dla SEO">
           <h2>Jak działa ten kalkulator?</h2>
           <p>{seoText}</p>
