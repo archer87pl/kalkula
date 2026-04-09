@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /_next/
+Disallow: /api/
+
+Sitemap: https://kalkula.pl/sitemap.xml
+Host: https://kalkula.pl
