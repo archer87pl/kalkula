@@ -87,7 +87,7 @@ export default function LedResistorCalculator() {
         <label className="block text-sm font-medium text-gray-700">
           Napięcie zasilania (V)
         </label>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-3">
           {COMMON_VOLTAGES.map((v) => (
             <button
               key={v}

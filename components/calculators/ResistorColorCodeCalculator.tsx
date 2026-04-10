@@ -175,7 +175,7 @@ export default function ResistorColorCodeCalculator() {
         <label className="block text-sm font-medium text-gray-700">
           Ilość pasków
         </label>
-        <div className="flex gap-4">
+        <div className="flex gap-3">
           {([4, 5, 6] as BandCount[]).map((count) => (
             <button
               key={count}

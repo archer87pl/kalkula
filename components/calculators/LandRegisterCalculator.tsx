@@ -34,7 +34,7 @@ export default function LandRegisterCalculator() {
   return (
     <div className="mx-auto max-w-2xl space-y-6">
       {/* Wybór trybu */}
-      <div className="flex gap-4 rounded-lg bg-gray-100 p-1">
+      <div className="flex gap-3 rounded-lg bg-gray-100 p-1">
         <button
           onClick={() => setVerifyMode(false)}
           className={`flex-1 rounded-md px-4 py-2 font-medium transition-colors ${
