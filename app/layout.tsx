@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
+import { Manrope } from "next/font/google";
 import "./globals.css";
+
+const manrope = Manrope({
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  variable: "--font-manrope",
+  weight: ["400", "500", "600", "700", "800"]
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kalkula.pl"),
@@ -7,7 +15,7 @@ export const metadata: Metadata = {
     default: "Kalkula - Kalkulatory online",
     template: "%s | Kalkula"
   },
-  description: "Zestaw praktycznych kalkulatorów: PCC, taksa notarialna, kredyt, pożyczka i BMI.",
+  description: "Kalkula - darmowe kalkulatory online do obliczeń finansowych, prawnych i zdrowotnych. PCC, taksa notarialna, rata kredytu i pożyczki, VAT, BMI, alkohol i więcej. Szybkie wyliczenia bez logowania.",
   applicationName: "Kalkula",
   alternates: {
     canonical: "/"
@@ -22,7 +30,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.svg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Kalkula - kalkulatory online"
@@ -32,8 +40,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Kalkula - Kalkulatory online",
-    description: "PCC, taksa notarialna, kredyt, pożyczka i BMI.",
-    images: ["/og-image.svg"]
+    description: "Darmowe kalkulatory finansowe, prawne i zdrowotne - PCC, taksa notarialna, kredyt, pożyczka, VAT, BMI i więcej. Szybkie obliczenia bez logowania.",
+    images: ["/og-image.png"]
   },
   icons: {
     icon: [
@@ -50,8 +58,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pl">
-      <body>
+    <html lang="pl" className={manrope.variable}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body className={manrope.className}>
         <div className="page-shell">{children}</div>
       </body>
     </html>

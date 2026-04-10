@@ -163,6 +163,21 @@ export default function CalculatorIcon({ icon, className = "" }: CalculatorIconP
     );
   }
 
+  if (icon === "capacitor") {
+    return (
+      <span className={`calc-icon ${className}`.trim()}>
+        <svg {...sharedProps}>
+          <line x1="6" y1="4" x2="6" y2="20" strokeWidth="2.5" />
+          <line x1="18" y1="4" x2="18" y2="20" strokeWidth="2.5" />
+          <line x1="3" y1="12" x2="6" y2="12" />
+          <line x1="18" y1="12" x2="21" y2="12" />
+          <path d="M10 7v10" strokeWidth="1.2" opacity="0.4" />
+          <path d="M14 7v10" strokeWidth="1.2" opacity="0.4" />
+        </svg>
+      </span>
+    );
+  }
+
   return (
     <span className={`calc-icon ${className}`.trim()}>
       <svg {...sharedProps}>

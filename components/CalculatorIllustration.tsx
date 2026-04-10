@@ -345,5 +345,40 @@ export default function CalculatorIllustration({ icon, className = "" }: Props) 
     );
   }
 
+  if (icon === "capacitor") {
+    // Capacitor symbol with code label
+    return (
+      <span className={cls} aria-hidden="true">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Capacitor body - two parallel plates */}
+          <rect x="28" y="8" width="4" height="52" rx="1" fill="#60a5fa" stroke="#2563eb" strokeWidth="1.2" />
+          <rect x="48" y="8" width="4" height="52" rx="1" fill="#60a5fa" stroke="#2563eb" strokeWidth="1.2" />
+          
+          {/* Connection wires */}
+          <line x1="10" y1="34" x2="28" y2="34" stroke="#2563eb" strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="52" y1="34" x2="70" y2="34" stroke="#2563eb" strokeWidth="2.5" strokeLinecap="round" />
+          
+          {/* Electric field lines (subtle) */}
+          <line x1="34" y1="15" x2="46" y2="15" stroke="#93c5fd" strokeWidth="0.8" opacity="0.5" />
+          <line x1="34" y1="22" x2="46" y2="22" stroke="#93c5fd" strokeWidth="0.8" opacity="0.5" />
+          <line x1="34" y1="29" x2="46" y2="29" stroke="#93c5fd" strokeWidth="0.8" opacity="0.5" />
+          <line x1="34" y1="39" x2="46" y2="39" stroke="#93c5fd" strokeWidth="0.8" opacity="0.5" />
+          <line x1="34" y1="46" x2="46" y2="46" stroke="#93c5fd" strokeWidth="0.8" opacity="0.5" />
+          <line x1="34" y1="53" x2="46" y2="53" stroke="#93c5fd" strokeWidth="0.8" opacity="0.5" />
+          
+          {/* Code label badge */}
+          <rect x="14" y="56" width="52" height="18" rx="4" fill="#fbbf24" stroke="#f59e0b" strokeWidth="1.2" />
+          <text x="40" y="68" fontSize="12" fontWeight="700" fill="#78350f" textAnchor="middle" fontFamily="monospace">
+            104
+          </text>
+          
+          {/* Small plus/minus symbols on plates */}
+          <text x="30" y="7" fontSize="8" fontWeight="700" fill="#2563eb" textAnchor="middle">+</text>
+          <text x="50" y="7" fontSize="8" fontWeight="700" fill="#2563eb" textAnchor="middle">−</text>
+        </svg>
+      </span>
+    );
+  }
+
   return <span className={cls} aria-hidden="true" />;
 }

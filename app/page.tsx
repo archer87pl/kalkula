@@ -10,7 +10,7 @@ import { createHomeSchema } from "@/lib/seo-schema";
 export const metadata: Metadata = {
   title: "Kalkulatory online - finanse, prawo, zdrowie",
   description:
-    "Statyczna strona z kalkulatorami: PCC, taksa notarialna, rata kredytu, pożyczki i BMI.",
+    "Kalkula to zestaw darmowych kalkulatorów online - oblicz podatek PCC, taksę notarialną, ratę kredytu lub pożyczki, VAT, BMI i więcej. Proste narzędzia do szybkich obliczeń finansowych, prawnych i zdrowotnych bez rejestracji.",
   alternates: {
     canonical: "/"
   }

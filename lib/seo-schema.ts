@@ -11,10 +11,30 @@ export function createHomeSchema(calculators: CalculatorItem[]) {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        name: "Kalkula",
+        url: SITE_URL,
+        logo: {
+          "@type": "ImageObject",
+          url: `${SITE_URL}/logo.png`,
+          width: 220,
+          height: 92
+        },
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          availableLanguage: "Polish"
+        }
+      },
+      {
         "@type": "WebSite",
         name: "Kalkula",
         url: SITE_URL,
         inLanguage: "pl-PL",
+        publisher: {
+          "@id": `${SITE_URL}/#organization`
+        },
         potentialAction: {
           "@type": "SearchAction",
           target: `${SITE_URL}/?q={search_term_string}`,
@@ -115,5 +135,24 @@ export function createCalculatorSchema(calculator: CalculatorItem) {
         }))
       }
     ]
+  };
+}
+
+export function createHowToSchema(
+  name: string,
+  description: string,
+  steps: Array<{ name: string; text: string }>
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name,
+    description,
+    step: steps.map((step, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: step.name,
+      text: step.text
+    }))
   };
 }

@@ -6,6 +6,7 @@ import AutoFocusOnMobile from "@/components/AutoFocusOnMobile";
 import CalculatorNav from "@/components/CalculatorNav";
 import RecentCalculators from "@/components/RecentCalculators";
 import StructuredData from "@/components/StructuredData";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { CALCULATORS, getCalculatorByHref, type CalculatorIconKey } from "@/lib/calculators";
 
 type CalculatorLayoutProps = {
@@ -41,11 +42,25 @@ export default function CalculatorLayout({
     })
     .slice(0, 4);
 
+  const categoryHref =
+    currentCalculator.category === "Prawo" ? "/prawo" :
+    currentCalculator.category === "Finanse" ? "/finanse" :
+    currentCalculator.category === "Zdrowie" ? "/zdrowie" :
+    currentCalculator.category === "Elektronika" ? "/elektronika" :
+    "/narzedzia";
+
+  const breadcrumbItems = [
+    { name: "Strona główna", href: "/" },
+    { name: currentCalculator.category, href: categoryHref },
+    { name: currentCalculator.shortTitle }
+  ];
+
   return (
     <>
       <StructuredData data={schemaData} />
       <AutoFocusOnMobile targetId="calculator-focus-target" />
       <PageHeader />
+      <Breadcrumbs items={breadcrumbItems} />
       <CalculatorNav currentHref={currentHref} />
       <main className="calc-box">
         <nav className="calc-anchors" aria-label="Szybkie skróty sekcji">
@@ -70,6 +85,28 @@ export default function CalculatorLayout({
         <section id="opis-seo" className="seo-copy" aria-label="Opis kalkulatora dla SEO">
           <h2>Jak działa ten kalkulator?</h2>
           <p>{seoText}</p>
+          {relatedCalculators.length > 0 && (
+            <p className="seo-copy-extra">
+              Jeśli ten kalkulator był przydatny, sprawdź również:{" "}
+              {relatedCalculators.slice(0, 3).map((calc, index, arr) => (
+                <span key={calc.href}>
+                  <Link href={calc.href} className="inline-link">
+                    {calc.shortTitle}
+                  </Link>
+                  {index < arr.length - 1 && ", "}
+                </span>
+              ))}
+              {relatedCalculators.length > 3 && (
+                <>
+                  {" i "}
+                  <Link href="/" className="inline-link">
+                    więcej kalkulatorów
+                  </Link>
+                </>
+              )}
+              .
+            </p>
+          )}
           <p className="seo-copy-extra">
             Kalkulator zawiera walidację danych wejściowych i działa lokalnie w przeglądarce.
             Dzięki temu możesz szybko porównać różne scenariusze bez przesyłania danych na serwer.

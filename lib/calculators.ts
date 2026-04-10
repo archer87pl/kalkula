@@ -1,4 +1,4 @@
-export type CalculatorIconKey = "pcc" | "notarial" | "loan" | "cash" | "bmi" | "vat" | "alcohol" | "bonds" | "resistor" | "landregister" | "yearend";
+export type CalculatorIconKey = "pcc" | "notarial" | "loan" | "cash" | "bmi" | "vat" | "alcohol" | "bonds" | "resistor" | "landregister" | "yearend" | "capacitor";
 
 export type CalculatorItem = {
   href: string;
@@ -318,16 +318,17 @@ export const CALCULATORS: CalculatorItem[] = [
   },
   {
     href: "/elektronika/rezystor",
-    title: "Kalkulator kodów barwnych rezystorów",
+    title: "Dekoder kodów barwnych rezystorów",
     shortTitle: "Rezystory",
-    description: "Odczytaj wartość rezystora na podstawie kolorowych pasków (4, 5 lub 6 pasmowych).",
+    description: "Odkoduj wartość rezystora na podstawie kolorowych pasków (4, 5 lub 6 pasmowych).",
     seoDescription:
-      "Nie wiesz, jaką wartość ma rezystor? Wybierz kolory pasków, a kalkulator od razu poda rezystancję, tolerancję i współczynnik temperaturowy. Obsługuje rezystory 4, 5 i 6-pasmowe – idealne dla elektroników i hobbyistów.",
+      "Nie wiesz, jaką wartość ma rezystor? Wybierz kolory pasków, a dekoder od razu poda rezystancję, tolerancję i współczynnik temperaturowy. Obsługuje rezystory 4, 5 i 6-pasmowe – idealne dla elektroników i hobbyistów.",
     helperText:
-      "Wybierz ilość pasków na rezystorze (4, 5 lub 6), a następnie wskaż kolory poszczególnych pasków. Kalkulator automatycznie wyliczy wartość rezystancji w omach, tolerancję i (dla 6-pasmowych) współczynnik temperaturowy.",
+      "Wybierz ilość pasków na rezystorze (4, 5 lub 6), a następnie wskaż kolory poszczególnych pasków. Dekoder automatycznie wyliczy wartość rezystancji w omach, tolerancję i (dla 6-pasmowych) współczynnik temperaturowy.",
     category: "Elektronika",
     icon: "resistor",
     keywords: [
+      "dekoder rezystorów",
       "kalkulator rezystorów",
       "kody barwne rezystorów",
       "kolor rezystor",
@@ -363,6 +364,56 @@ export const CALCULATORS: CalculatorItem[] = [
         question: "Jakie kolory odpowiadają jakim cyfrom?",
         answer:
           "Czarny=0, Brązowy=1, Czerwony=2, Pomarańczowy=3, Żółty=4, Zielony=5, Niebieski=6, Fioletowy=7, Szary=8, Biały=9. Mnożniki: Złoty=×0.1, Srebrny=×0.01, Czarny=×1, Brązowy=×10, Czerwony=×100 itd. Złoty i srebrny pasek na końcu oznacza tolerancję (5% i 10%)."
+      }
+    ]
+  },
+  {
+    href: "/elektronika/kondensator",
+    title: "Dekoder kodów kondensatorów",
+    shortTitle: "Kondensatory",
+    description: "Odkoduj wartość kondensatora na podstawie 3-cyfrowego kodu (np. 104 = 100 nF).",
+    seoDescription:
+      "Nie wiesz jaką pojemność ma kondensator ceramiczny? Wpisz kod z obudowy (np. 104, 223, 0R5), a dekoder natychmiast przeliczy go na pikofarady, nanofarady i mikrofarady. Obsługuje standardowe kody 3-cyfrowe i notację z literą R.",
+    helperText:
+      "Wpisz kod kondensatora (np. 104, 223, 471), a dekoder automatycznie wyliczy pojemność w pikofaradach, nanofaradach i mikrofaradach. Kod składa się z dwóch cyfr wartości i cyfry mnożnika – np. 104 to 10 × 10^4 = 100000 pF = 100 nF.",
+    category: "Elektronika",
+    icon: "capacitor",
+    keywords: [
+      "kalkulator kondensatorów",
+      "kod kondensatora",
+      "pojemność kondensatora",
+      "dekoder kondensatorów",
+      "104 kondensator",
+      "kondensator ceramiczny",
+      "pikofarady",
+      "nanofarady",
+      "mikrofarady"
+    ],
+    faq: [
+      {
+        question: "Jak czytać kod kondensatora?",
+        answer:
+          "Kod kondensatora ceramicznego składa się zwykle z 3 cyfr. Pierwsze dwie to wartość bazowa, a trzecia to mnożnik (liczba zer do dodania). Wynik jest zawsze w pikofaradach (pF). Przykład: 104 = 10 × 10^4 = 100 000 pF = 100 nF = 0.1 µF."
+      },
+      {
+        question: "Co oznacza kod 104 na kondensatorze?",
+        answer:
+          "Kod 104 to jeden z najpopularniejszych - oznacza 10 × 10^4 = 100 000 pikofaradów, czyli 100 nanofaradów (100 nF) lub 0.1 mikrofarada (0.1 µF). Jest to standardowa pojemność kondensatora sprzęgającego lub odsprzęgającego w układach elektronicznych."
+      },
+      {
+        question: "Czym różnią się pikofarady, nanofarady i mikrofarady?",
+        answer:
+          "To różne jednostki pojemności. 1 nanofarad (nF) = 1000 pikofaradów (pF), a 1 mikrofarad (µF) = 1000 nanofaradów = 1 000 000 pikofaradów. Kalkulator automatycznie przelicza między tymi jednostkami i pokazuje wynik w najbardziej czytelnej formie."
+      },
+      {
+        question: "Co znaczy litera R w kodzie kondensatora?",
+        answer:
+          "Litera R zastępuje przecinek dziesiętny w kodach kondensatorów o małych pojemnościach. Przykłady: 0R5 = 0.5 pF, 1R0 = 1.0 pF, R47 = 0.47 pF. Jest to standardowa notacja dla kondensatorów poniżej 10 pikofaradów."
+      },
+      {
+        question: "Jakie są najpopularniejsze wartości kondensatorów?",
+        answer:
+          "Najpopularniejsze to: 104 (100 nF), 103 (10 nF), 102 (1 nF), 223 (22 nF), 473 (47 nF), 101 (100 pF). W układach cyfrowych często spotyka się kondensatory odsprzęgające 100 nF (104) przy zasilaniu układów scalonych. Kalkulator pokazuje listę popularnych wartości do szybkiego wyboru."
       }
     ]
   },

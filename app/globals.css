@@ -25,7 +25,7 @@ body {
     radial-gradient(circle at 50% 100%, rgba(169, 175, 255, 0.17) 0%, rgba(169, 175, 255, 0) 40%),
     linear-gradient(180deg, #f5f8ff 0%, #eef2fb 100%);
   color: var(--text);
-  font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  font-family: var(--font-manrope), "Avenir Next", "Segoe UI", sans-serif;
   min-height: 100vh;
 }
 
@@ -866,4 +866,62 @@ button:hover {
   .split-fields {
     grid-template-columns: 1fr;
   }
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbs li {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.breadcrumbs a {
+  color: var(--primary);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+  color: var(--primary-strong);
+  text-decoration: underline;
+}
+
+.breadcrumbs .current {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.breadcrumbs .separator {
+  color: var(--muted);
+  user-select: none;
+}
+
+/* Internal links */
+.inline-link {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.inline-link:hover {
+  color: var(--primary-strong);
+  text-decoration-thickness: 2px;
 }
