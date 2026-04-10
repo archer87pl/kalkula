@@ -3,6 +3,7 @@ import CalculatorLayout from "@/components/CalculatorLayout";
 import LoanCalculator from "@/components/calculators/LoanCalculator";
 import { getCalculatorByHref } from "@/lib/calculators";
 import { createCalculatorSchema } from "@/lib/seo-schema";
+import { getCalculatorContent } from "@/lib/content";
 
 const calculator = getCalculatorByHref("/finanse/pozyczka");
 
@@ -22,6 +23,8 @@ export const metadata: Metadata = {
 };
 
 export default function LoanAlternativePage() {
+  const markdownContent = getCalculatorContent("finanse-pozyczka");
+  
   return (
     <CalculatorLayout
       title={calculator.title}
@@ -30,6 +33,7 @@ export default function LoanAlternativePage() {
       icon={calculator.icon}
       currentHref={calculator.href}
       schemaData={createCalculatorSchema(calculator)}
+      markdownContent={markdownContent}
     >
       <LoanCalculator label="pożyczki" />
     </CalculatorLayout>

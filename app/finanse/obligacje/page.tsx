@@ -3,6 +3,7 @@ import CalculatorLayout from "@/components/CalculatorLayout";
 import TreasuryBondsCalculator from "@/components/calculators/TreasuryBondsCalculator";
 import { getCalculatorByHref } from "@/lib/calculators";
 import { createCalculatorSchema } from "@/lib/seo-schema";
+import { getCalculatorContent } from "@/lib/content";
 
 const calculator = getCalculatorByHref("/finanse/obligacje");
 
@@ -22,6 +23,8 @@ export const metadata: Metadata = {
 };
 
 export default function TreasuryBondsPage() {
+  const markdownContent = getCalculatorContent("finanse-obligacje");
+  
   return (
     <CalculatorLayout
       title={calculator.title}
@@ -30,6 +33,7 @@ export default function TreasuryBondsPage() {
       icon={calculator.icon}
       currentHref={calculator.href}
       schemaData={createCalculatorSchema(calculator)}
+      markdownContent={markdownContent}
     >
       <TreasuryBondsCalculator />
     </CalculatorLayout>

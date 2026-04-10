@@ -7,6 +7,7 @@ import CalculatorNav from "@/components/CalculatorNav";
 import RecentCalculators from "@/components/RecentCalculators";
 import StructuredData from "@/components/StructuredData";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import MarkdownContent from "@/components/MarkdownContent";
 import { CALCULATORS, getCalculatorByHref, type CalculatorIconKey } from "@/lib/calculators";
 
 type CalculatorLayoutProps = {
@@ -16,6 +17,7 @@ type CalculatorLayoutProps = {
   icon: CalculatorIconKey;
   currentHref: string;
   schemaData: Record<string, unknown>;
+  markdownContent?: string | null;
   children: React.ReactNode;
 };
 
@@ -26,6 +28,7 @@ export default function CalculatorLayout({
   icon,
   currentHref,
   schemaData,
+  markdownContent,
   children
 }: CalculatorLayoutProps) {
   const currentCalculator = getCalculatorByHref(currentHref);
@@ -83,8 +86,14 @@ export default function CalculatorLayout({
           {children}
         </section>
         <section id="opis-seo" className="seo-copy" aria-label="Opis kalkulatora dla SEO">
-          <h2>Jak działa ten kalkulator?</h2>
-          <p>{seoText}</p>
+          {markdownContent ? (
+            <MarkdownContent content={markdownContent} />
+          ) : (
+            <>
+              <h2>Jak działa ten kalkulator?</h2>
+              <p>{seoText}</p>
+            </>
+          )}
           {relatedCalculators.length > 0 && (
             <p className="seo-copy-extra">
               Jeśli ten kalkulator był przydatny, sprawdź również:{" "}

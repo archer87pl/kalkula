@@ -380,5 +380,54 @@ export default function CalculatorIllustration({ icon, className = "" }: Props) 
     );
   }
 
+  if (icon === "inflation") {
+    // Rising chart with money and percentage symbol
+    return (
+      <span className={cls} aria-hidden="true">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Chart background */}
+          <rect x="8" y="10" width="64" height="54" rx="4" fill="#fef3c7" stroke="#f59e0b" strokeWidth="1.2" />
+          
+          {/* Chart axes */}
+          <line x1="14" y1="58" x2="66" y2="58" stroke="#d97706" strokeWidth="1.5" />
+          <line x1="14" y1="18" x2="14" y2="58" stroke="#d97706" strokeWidth="1.5" />
+          
+          {/* Rising trend line */}
+          <polyline
+            points="14,52 24,48 34,42 44,38 54,30 64,22"
+            stroke="#dc2626"
+            strokeWidth="2.5"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          
+          {/* Data points */}
+          <circle cx="24" cy="48" r="2.5" fill="#dc2626" />
+          <circle cx="34" cy="42" r="2.5" fill="#dc2626" />
+          <circle cx="44" cy="38" r="2.5" fill="#dc2626" />
+          <circle cx="54" cy="30" r="2.5" fill="#dc2626" />
+          <circle cx="64" cy="22" r="2.5" fill="#dc2626" />
+          
+          {/* Upward arrow */}
+          <path d="M60 22 L64 18 L68 22" stroke="#dc2626" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          
+          {/* Percentage symbol badge */}
+          <circle cx="58" cy="58" r="16" fill="#ef4444" />
+          <text x="58" y="66" fontSize="16" fontWeight="700" fill="white" textAnchor="middle" fontFamily="Arial, sans-serif">
+            %
+          </text>
+          <circle cx="52" cy="52" r="2" fill="white" opacity="0.7" />
+          <circle cx="64" cy="64" r="2" fill="white" opacity="0.7" />
+          
+          {/* Coin stack (left side) */}
+          <ellipse cx="20" cy="70" rx="8" ry="3" fill="#fbbf24" stroke="#f59e0b" strokeWidth="0.8" />
+          <ellipse cx="20" cy="67" rx="8" ry="3" fill="#fde047" stroke="#f59e0b" strokeWidth="0.8" />
+          <ellipse cx="20" cy="64" rx="8" ry="3" fill="#fef08a" stroke="#f59e0b" strokeWidth="0.8" />
+        </svg>
+      </span>
+    );
+  }
+
   return <span className={cls} aria-hidden="true" />;
 }

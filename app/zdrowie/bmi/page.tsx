@@ -3,6 +3,7 @@ import CalculatorLayout from "@/components/CalculatorLayout";
 import BmiCalculator from "@/components/calculators/BmiCalculator";
 import { getCalculatorByHref } from "@/lib/calculators";
 import { createCalculatorSchema } from "@/lib/seo-schema";
+import { getCalculatorContent } from "@/lib/content";
 
 const calculator = getCalculatorByHref("/zdrowie/bmi");
 
@@ -22,6 +23,8 @@ export const metadata: Metadata = {
 };
 
 export default function BmiPage() {
+  const markdownContent = getCalculatorContent("zdrowie-bmi");
+  
   return (
     <CalculatorLayout
       title={calculator.title}
@@ -30,6 +33,7 @@ export default function BmiPage() {
       icon={calculator.icon}
       currentHref={calculator.href}
       schemaData={createCalculatorSchema(calculator)}
+      markdownContent={markdownContent}
     >
       <BmiCalculator />
     </CalculatorLayout>

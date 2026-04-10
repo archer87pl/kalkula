@@ -3,6 +3,7 @@ import CalculatorLayout from "@/components/CalculatorLayout";
 import NotarialFeeCalculator from "@/components/calculators/NotarialFeeCalculator";
 import { getCalculatorByHref } from "@/lib/calculators";
 import { createCalculatorSchema } from "@/lib/seo-schema";
+import { getCalculatorContent } from "@/lib/content";
 
 const calculator = getCalculatorByHref("/prawo/taksa-notarialna");
 
@@ -22,6 +23,8 @@ export const metadata: Metadata = {
 };
 
 export default function NotarialFeePage() {
+  const markdownContent = getCalculatorContent("prawo-taksa-notarialna");
+  
   return (
     <CalculatorLayout
       title={calculator.title}
@@ -30,6 +33,7 @@ export default function NotarialFeePage() {
       icon={calculator.icon}
       currentHref={calculator.href}
       schemaData={createCalculatorSchema(calculator)}
+      markdownContent={markdownContent}
     >
       <NotarialFeeCalculator />
     </CalculatorLayout>

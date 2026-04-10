@@ -3,6 +3,7 @@ import CalculatorLayout from "@/components/CalculatorLayout";
 import ResistorColorCodeCalculator from "@/components/calculators/ResistorColorCodeCalculator";
 import { getCalculatorByHref } from "@/lib/calculators";
 import { createCalculatorSchema } from "@/lib/seo-schema";
+import { getCalculatorContent } from "@/lib/content";
 
 const calculator = getCalculatorByHref("/elektronika/rezystor");
 
@@ -25,6 +26,8 @@ export const metadata: Metadata = {
 
 export default function ResistorPage() {
   if (!calculator) return null;
+  
+  const markdownContent = getCalculatorContent("elektronika-rezystor");
 
   return (
     <CalculatorLayout
@@ -34,6 +37,7 @@ export default function ResistorPage() {
       icon={calculator.icon}
       currentHref={calculator.href}
       schemaData={createCalculatorSchema(calculator)}
+      markdownContent={markdownContent}
     >
       <ResistorColorCodeCalculator />
     </CalculatorLayout>

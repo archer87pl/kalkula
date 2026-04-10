@@ -3,6 +3,7 @@ import CalculatorLayout from "@/components/CalculatorLayout";
 import DaysToYearEndCalculator from "@/components/calculators/DaysToYearEndCalculator";
 import { getCalculatorByHref } from "@/lib/calculators";
 import { createCalculatorSchema } from "@/lib/seo-schema";
+import { getCalculatorContent } from "@/lib/content";
 
 const calculator = getCalculatorByHref("/narzedzia/dni-do-konca-roku");
 
@@ -25,6 +26,8 @@ export const metadata: Metadata = {
 
 export default function DaysToYearEndPage() {
   if (!calculator) return null;
+  
+  const markdownContent = getCalculatorContent("narzedzia-dni-do-konca-roku");
 
   return (
     <CalculatorLayout
@@ -34,6 +37,7 @@ export default function DaysToYearEndPage() {
       icon={calculator.icon}
       currentHref={calculator.href}
       schemaData={createCalculatorSchema(calculator)}
+      markdownContent={markdownContent}
     >
       <DaysToYearEndCalculator />
     </CalculatorLayout>

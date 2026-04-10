@@ -3,6 +3,7 @@ import CalculatorLayout from "@/components/CalculatorLayout";
 import CapacitorCodeCalculator from "@/components/calculators/CapacitorCodeCalculator";
 import { getCalculatorByHref } from "@/lib/calculators";
 import { createCalculatorSchema } from "@/lib/seo-schema";
+import { getCalculatorContent } from "@/lib/content";
 
 const calculator = getCalculatorByHref("/elektronika/kondensator");
 
@@ -22,6 +23,8 @@ export const metadata: Metadata = {
 };
 
 export default function CapacitorPage() {
+  const markdownContent = getCalculatorContent("elektronika-kondensator");
+  
   return (
     <CalculatorLayout
       title={calculator.title}
@@ -30,6 +33,7 @@ export default function CapacitorPage() {
       icon={calculator.icon}
       currentHref={calculator.href}
       schemaData={createCalculatorSchema(calculator)}
+      markdownContent={markdownContent}
     >
       <CapacitorCodeCalculator />
     </CalculatorLayout>

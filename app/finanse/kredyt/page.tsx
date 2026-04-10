@@ -4,6 +4,7 @@ import LoanCalculator from "@/components/calculators/LoanCalculator";
 import StructuredData from "@/components/StructuredData";
 import { getCalculatorByHref } from "@/lib/calculators";
 import { createCalculatorSchema, createHowToSchema } from "@/lib/seo-schema";
+import { getCalculatorContent } from "@/lib/content";
 
 const calculator = getCalculatorByHref("/finanse/kredyt");
 
@@ -42,6 +43,8 @@ export const metadata: Metadata = {
 };
 
 export default function LoanPage() {
+  const markdownContent = getCalculatorContent("finanse-kredyt");
+  
   const howToSchema = createHowToSchema(
     "Jak obliczyć ratę kredytu",
     "Przewodnik krok po kroku do obliczenia miesięcznej raty kredytu",
@@ -58,6 +61,7 @@ export default function LoanPage() {
         icon={calculator.icon}
         currentHref={calculator.href}
         schemaData={createCalculatorSchema(calculator)}
+        markdownContent={markdownContent}
       >
         <LoanCalculator label="kredytu" />
       </CalculatorLayout>

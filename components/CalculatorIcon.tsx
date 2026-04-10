@@ -178,6 +178,19 @@ export default function CalculatorIcon({ icon, className = "" }: CalculatorIconP
     );
   }
 
+  if (icon === "inflation") {
+    return (
+      <span className={`calc-icon ${className}`.trim()}>
+        <svg {...sharedProps}>
+          <polyline points="3 17 9 11 13 15 21 7" />
+          <polyline points="16 7 21 7 21 12" />
+          <circle cx="9" cy="11" r="1.5" fill="currentColor" />
+          <circle cx="13" cy="15" r="1.5" fill="currentColor" />
+        </svg>
+      </span>
+    );
+  }
+
   return (
     <span className={`calc-icon ${className}`.trim()}>
       <svg {...sharedProps}>

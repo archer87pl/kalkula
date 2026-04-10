@@ -3,6 +3,7 @@ import CalculatorLayout from "@/components/CalculatorLayout";
 import BruttoNettoCalculator from "@/components/calculators/BruttoNettoCalculator";
 import { getCalculatorByHref } from "@/lib/calculators";
 import { createCalculatorSchema } from "@/lib/seo-schema";
+import { getCalculatorContent } from "@/lib/content";
 
 const calculator = getCalculatorByHref("/finanse/vat");
 
@@ -22,6 +23,8 @@ export const metadata: Metadata = {
 };
 
 export default function VatPage() {
+  const markdownContent = getCalculatorContent("finanse-vat");
+  
   return (
     <CalculatorLayout
       title={calculator.title}
@@ -30,6 +33,7 @@ export default function VatPage() {
       icon={calculator.icon}
       currentHref={calculator.href}
       schemaData={createCalculatorSchema(calculator)}
+      markdownContent={markdownContent}
     >
       <BruttoNettoCalculator />
     </CalculatorLayout>

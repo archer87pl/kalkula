@@ -3,6 +3,7 @@ import CalculatorLayout from "@/components/CalculatorLayout";
 import PccCalculator from "@/components/calculators/PccCalculator";
 import { getCalculatorByHref } from "@/lib/calculators";
 import { createCalculatorSchema } from "@/lib/seo-schema";
+import { getCalculatorContent } from "@/lib/content";
 
 const calculator = getCalculatorByHref("/prawo/pcc");
 
@@ -22,6 +23,8 @@ export const metadata: Metadata = {
 };
 
 export default function PccPage() {
+  const markdownContent = getCalculatorContent("prawo-pcc");
+  
   return (
     <CalculatorLayout
       title={calculator.title}
@@ -30,6 +33,7 @@ export default function PccPage() {
       icon={calculator.icon}
       currentHref={calculator.href}
       schemaData={createCalculatorSchema(calculator)}
+      markdownContent={markdownContent}
     >
       <PccCalculator />
     </CalculatorLayout>

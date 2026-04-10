@@ -1,4 +1,4 @@
-export type CalculatorIconKey = "pcc" | "notarial" | "loan" | "cash" | "bmi" | "vat" | "alcohol" | "bonds" | "resistor" | "landregister" | "yearend" | "capacitor";
+export type CalculatorIconKey = "pcc" | "notarial" | "loan" | "cash" | "bmi" | "vat" | "alcohol" | "bonds" | "resistor" | "landregister" | "yearend" | "capacitor" | "inflation";
 
 export type CalculatorItem = {
   href: string;
@@ -259,6 +259,50 @@ export const CALCULATORS: CalculatorItem[] = [
       {
         question: "Czy mogę zaufać temu kalkulatorowi i wsiąść za kierownicę?",
         answer: "Absolutnie nie. Kalkulator daje szacunek, który może się różnić od rzeczywistości nawet o 20–30% w zależności od tego, co jadłeś, jak się czujesz, jakie masz leki, jak Twój wątroba pracuje danego dnia. Jedynym wiarygodnym pomiarem jest alkotest lub badanie krwi. Jeśli piłeś – nie prowadź. Zawołaj taksówkę."
+      }
+    ]
+  },
+  {
+    href: "/finanse/inflacja",
+    title: "Kalkulator inflacji",
+    shortTitle: "Inflacja",
+    description: "Sprawdź jak inflacja wpłynęła na wartość pieniądza w latach 1990-2026.",
+    seoDescription:
+      "Oblicz jak inflacja zmieniła siłę nabywczą Twoich pieniędzy. Wpisz kwotę i dwa lata, a kalkulator pokaże ile są warte Twoje oszczędności po uwzględnieniu inflacji. Dane GUS 1990-2026 z pełną tabelą rocznych wskaźników inflacji.",
+    helperText:
+      "Wprowadź kwotę początkową i wybierz dwa lata (np. 2010 i 2025). Kalkulator wyliczy jak inflacja wpłynęła na wartość pieniądza oraz pokaże ile potrzebujesz dziś, żeby mieć tę samą siłę nabywczą. Zawiera pełną tabelę wskaźników inflacji w Polsce od 1990 roku.",
+    category: "Finanse",
+    icon: "inflation",
+    keywords: [
+      "kalkulator inflacji",
+      "inflacja w polsce",
+      "siła nabywcza",
+      "wartość pieniądza",
+      "wskaźnik inflacji",
+      "inflacja gus",
+      "inflacja historyczna",
+      "kalkulator wartości pieniądza"
+    ],
+    faq: [
+      {
+        question: "Jak inflacja wpływa na wartość pieniądza?",
+        answer: "Inflacja oznacza wzrost cen towarów i usług, co sprawia, że za tę samą kwotę możesz kupić mniej niż wcześniej. Jeśli inflacja wynosi 5% rocznie, to za rok za 100 zł kupisz tyle, ile dziś za 95 zł. Kalkulator pokazuje, jak ta wartość zmieniała się w wybranych latach."
+      },
+      {
+        question: "Co to jest siła nabywcza pieniądza?",
+        answer: "Siła nabywcza to rzeczywista wartość pieniądza – ile rzeczywiście możesz za niego kupić. Kalkulator pokazuje ile złotych z roku docelowego odpowiada wartości Twojej kwoty początkowej. Przykład: 1000 zł z 2010 roku ma taką samą siłę nabywczą jak około 1700 zł w 2025."
+      },
+      {
+        question: "Skąd pochodzą dane o inflacji?",
+        answer: "Dane historyczne pochodzą z Głównego Urzędu Statystycznego (GUS) i dotyczą inflacji rok do roku. Dane za lata 2025-2026 to prognozy oparte na bieżących wskaźnikach i prognozach Narodowego Banku Polskiego. Wszystkie wartości są aktualizowane na podstawie oficjalnych statystyk."
+      },
+      {
+        question: "Dlaczego inflacja w Polsce była tak wysoka w latach 90-tych?",
+        answer: "W latach 90-tych Polska przechodziła transformację gospodarczą z systemu centralnie planowanego na gospodarkę rynkową. W 1990 roku inflacja wyniosła aż 249,3%, ale systematycznie spadała – w 2000 roku było to już 8,5%. Od początku XXI wieku inflacja ustabilizowała się na poziomie 0-5% rocznie (z wyjątkiem 2022 roku)."
+      },
+      {
+        question: "Jak chronić oszczędności przed inflacją?",
+        answer: "Trzymanie pieniędzy w domu lub na koncie bez oprocentowania oznacza realną stratę wartości. Aby zachować siłę nabywczą, warto rozważyć lokaty bankowe, obligacje skarbowe (COI, EDO indeksowane inflacją), fundusze inwestycyjne lub inne instrumenty, które przynoszą zysk wyższy niż inflacja."
       }
     ]
   },
