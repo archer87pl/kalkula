@@ -178,6 +178,26 @@ export default function CalculatorIcon({ icon, className = "" }: CalculatorIconP
     );
   }
 
+  if (icon === "ledresistor") {
+    return (
+      <span className={`calc-icon ${className}`.trim()}>
+        <svg {...sharedProps}>
+          {/* Rezystor */}
+          <rect x="3" y="10" width="7" height="4" rx="0.5" />
+          <line x1="10" y1="12" x2="12" y2="12" />
+          {/* LED - trójkąt + kreska */}
+          <polygon points="12,8 12,16 18,12" fill="none" />
+          <line x1="18" y1="8" x2="18" y2="16" strokeWidth="2" />
+          {/* Promienie świetlne */}
+          <path d="M16 7l1-2 1 0" strokeWidth="1.5" opacity="0.6" />
+          <path d="M17 6l1.5-1.5 0.5 0.5" strokeWidth="1.5" opacity="0.6" />
+          {/* Przewód */}
+          <line x1="18" y1="12" x2="21" y2="12" />
+        </svg>
+      </span>
+    );
+  }
+
   if (icon === "inflation") {
     return (
       <span className={`calc-icon ${className}`.trim()}>

@@ -429,5 +429,50 @@ export default function CalculatorIllustration({ icon, className = "" }: Props) 
     );
   }
 
+  if (icon === "ledresistor") {
+    // Resistor connected to LED with light rays
+    return (
+      <span className={cls} aria-hidden="true">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Resistor body */}
+          <rect x="10" y="32" width="24" height="12" rx="2" fill="#D4A574" stroke="#8B6F47" strokeWidth="1" />
+          {/* Color bands on resistor (470Ω - yellow-violet-brown) */}
+          <rect x="14" y="32" width="3" height="12" fill="#FFFF00" />
+          <rect x="20" y="32" width="3" height="12" fill="#8B00FF" />
+          <rect x="26" y="32" width="3" height="12" fill="#8B4513" />
+          
+          {/* Wire from resistor to LED */}
+          <line x1="34" y1="38" x2="42" y2="38" stroke="#999" strokeWidth="2" strokeLinecap="round" />
+          
+          {/* LED triangle (anode side) */}
+          <polygon points="42,28 42,48 56,38" fill="#60a5fa" stroke="#2563eb" strokeWidth="1.5" />
+          {/* LED cathode line */}
+          <line x1="56" y1="28" x2="56" y2="48" stroke="#2563eb" strokeWidth="2.5" />
+          
+          {/* Wire continuation */}
+          <line x1="56" y1="38" x2="64" y2="38" stroke="#999" strokeWidth="2" strokeLinecap="round" />
+          
+          {/* Light rays emanating from LED */}
+          <path d="M52 24 L54 18 L56 18" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.8" />
+          <path d="M54 22 L57 16 L59 17" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.7" />
+          <path d="M52 52 L54 58 L56 58" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.8" />
+          <path d="M54 54 L57 60 L59 59" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.7" />
+          
+          {/* Glow effect around LED */}
+          <circle cx="49" cy="38" r="12" fill="#fef3c7" opacity="0.4" />
+          
+          {/* Voltage badge */}
+          <circle cx="58" cy="60" r="14" fill="#10b981" />
+          <text x="58" y="64" fontSize="14" fontWeight="700" fill="white" textAnchor="middle" fontFamily="Arial, sans-serif">
+            V
+          </text>
+          <text x="58" y="58" fontSize="8" fontWeight="600" fill="white" textAnchor="middle" fontFamily="Arial, sans-serif">
+            12
+          </text>
+        </svg>
+      </span>
+    );
+  }
+
   return <span className={cls} aria-hidden="true" />;
 }

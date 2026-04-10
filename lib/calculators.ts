@@ -1,4 +1,4 @@
-export type CalculatorIconKey = "pcc" | "notarial" | "loan" | "cash" | "bmi" | "vat" | "alcohol" | "bonds" | "resistor" | "landregister" | "yearend" | "capacitor" | "inflation";
+export type CalculatorIconKey = "pcc" | "notarial" | "loan" | "cash" | "bmi" | "vat" | "alcohol" | "bonds" | "resistor" | "landregister" | "yearend" | "capacitor" | "inflation" | "ledresistor";
 
 export type CalculatorItem = {
   href: string;
@@ -458,6 +458,74 @@ export const CALCULATORS: CalculatorItem[] = [
         question: "Jakie są najpopularniejsze wartości kondensatorów?",
         answer:
           "Najpopularniejsze to: 104 (100 nF), 103 (10 nF), 102 (1 nF), 223 (22 nF), 473 (47 nF), 101 (100 pF). W układach cyfrowych często spotyka się kondensatory odsprzęgające 100 nF (104) przy zasilaniu układów scalonych. Kalkulator pokazuje listę popularnych wartości do szybkiego wyboru."
+      }
+    ]
+  },
+  {
+    href: "/elektronika/led",
+    title: "Kalkulator rezystora do LED",
+    shortTitle: "Rezystor LED",
+    description: "Oblicz jaki rezystor potrzebny do zasilania LED – 5V, 12V, 3V i dowolne napięcia.",
+    seoDescription:
+      "Chcesz podłączyć LED do 5V, 12V lub innego źródła napięcia? Ten kalkulator w kilka sekund obliczy wartość rezystora ograniczającego prąd, jego moc oraz pokaże schemat połączenia. Wybierz kolor LED (napięcie zależy od koloru) lub wpisz własne parametry – dla pojedynczych LED, taśm LED 12V i projektów Arduino.",
+    helperText:
+      "Wpisz napięcie zasilania (np. 5V z USB, 12V z zasilacza), wybierz kolor LED lub podaj napięcie przewodzenia, ustaw prąd (typowo 20mA) – kalkulator obliczy wartość rezystora i jego moc. Wynik zawiera najbliższą standardową wartość rezystora z szeregu E12 oraz schemat połączenia.",
+    category: "Elektronika",
+    icon: "ledresistor",
+    keywords: [
+      "rezystor do LED",
+      "jaki rezystor do LED 5V",
+      "jaki rezystor do LED 12V",
+      "LED 3V jaki rezystor",
+      "oblicz rezystor do LED",
+      "kalkulator LED",
+      "rezystor LED kalkulator",
+      "jak podłączyć LED 12V",
+      "rezystor do taśmy LED",
+      "dobór rezystora LED",
+      "rezystor ograniczający prąd",
+      "LED Arduino rezystor"
+    ],
+    faq: [
+      {
+        question: "Dlaczego LED potrzebuje rezystora?",
+        answer:
+          "LED to dioda, która nie ogranicza prądu sama – jeśli podłączysz ją bezpośrednio do źródła napięcia, przez LED popłynie zbyt duży prąd i natychmiast się przepali. Rezystor ogranicza prąd do bezpiecznej wartości (typowo 10-20 mA), chroniąc LED przed uszkodzeniem. Bez rezystora LED świeci chwilę bardzo jasno i gaśnie na zawsze."
+      },
+      {
+        question: "Jaki rezystor do LED 5V (Arduino, USB)?",
+        answer:
+          "Dla standardowej czerwonej LED (2V, 20mA) podłączonej do 5V potrzebujesz rezystora 150 Ω lub 220 Ω (najbliższa standardowa wartość). Dla białej lub niebieskiej LED (3.2V) wystarczy 100 Ω. Kalkulator dobierze dokładną wartość – wystarczy wybrać napięcie 5V i kolor LED."
+      },
+      {
+        question: "Jaki rezystor do LED 12V (zasilacz, samochód)?",
+        answer:
+          "Dla czerwonej LED (2V, 20mA) przy 12V potrzebujesz 470-560 Ω. Dla białej LED (3.3V) to około 470 Ω. Ważne: moc rezystora powinna wynosić minimum 0.25W (lepiej 0.5W), bo przy 12V na rezystorze rozpraszana jest spora energia. Kalkulator automatycznie dobierze moc rezystora."
+      },
+      {
+        question: "Jak obliczyć rezystor do taśmy LED?",
+        answer:
+          "Taśmy LED 12V mają zwykle wbudowane rezystory dla każdego segmentu (3 LED + rezystor). Jeśli montujesz pojedyncze LED z taśmy, użyj kalkulatora dla pojedynczego LED. Jeśli budujesz własny układ, każdy LED potrzebuje osobnego rezystora – nie możesz podpiąć wielu LED szeregowo przez jeden rezystor do 12V (bo napięcia się sumują)."
+      },
+      {
+        question: "Co jak nie mam rezystora o dokładnie takiej wartości?",
+        answer:
+          "Użyj najbliższej wyższej wartości – LED będzie świecić odrobinę ciemniej, ale to bezpieczne. Możesz też połączyć szeregowo dwa rezystory (wartości się dodają) lub równolegle (odwrotność sumy odwrotności). Nigdy nie używaj rezystora o znacznie niższej wartości – LED może się przepalić."
+      },
+      {
+        question: "Jak poznać napięcie przewodzenia mojej LED?",
+        answer:
+          "Zależy od koloru: czerwona 1.8-2.2V, żółta/zielona ~2.0-2.5V, niebieska/biała 3.0-3.5V, podczerwona ~1.5V, ultrafioletowa ~3.5V. Sprawdź w dokumentacji LED (datasheet) lub wybierz kolor w kalkulatorze – automatycznie dobierze typowe napięcie. Możesz też zmierzyć multimetrem w trybie 'diode test'."
+      },
+      {
+        question: "Jak sprawdzić polaryzację LED?",
+        answer:
+          "LED ma dłuższą nóżkę (anoda, +) i krótszą (katoda, -). Od strony katody obudowa ma ścięcie. Podłącz dłuższą nóżkę do plusa (przez rezystor), krótszą do minusa (GND). Jeśli podłączysz odwrotnie, LED po prostu nie zaświeci (ale się nie uszkodzi, bo dioda przewodzi tylko w jednym kierunku)."
+      },
+      {
+        question: "Ile prądu pobiera LED?",
+        answer:
+          "Standardowe LED 5mm pobierają typowo 10-20 mA. LED dużej mocy (1W, 3W) pobierają 350-700 mA i wymagają radiatora. LED SMD na taśmach to ~15-20 mA na diodę. W kalkulatorze ustaw 20 mA dla zwykłych LED – to bezpieczna wartość dająca dobrą jasność bez skracania żywotności."
       }
     ]
   },
